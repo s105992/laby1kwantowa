@@ -1,0 +1,26 @@
+services:
+  quantum-lab:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    container_name: quantum-lab
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${JUPYTER_PORT:-8888}:8888"
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:-qiskit-local}
+      IBM_QUANTUM_TOKEN: ${IBM_QUANTUM_TOKEN:-}
+      IBM_QUANTUM_INSTANCE: ${IBM_QUANTUM_INSTANCE:-}
+    volumes:
+      - ./notebooks:/workspace/notebooks
+      - ./data:/workspace/data
+      - ./scripts:/workspace/scripts:ro
+    command: >-
+      sh -lc 'exec jupyter lab
+      --ip=0.0.0.0
+      --port=8888
+      --no-browser
+      --ServerApp.root_dir=/workspace
+      --IdentityProvider.token="$${JUPYTER_TOKEN}"'

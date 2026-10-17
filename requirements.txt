@@ -1,0 +1,21 @@
+# Rdzeń Qiskit
+qiskit[visualization]==2.5.2
+qiskit-aer==0.17.2
+qiskit-ibm-runtime==0.50.0
+qiskit-algorithms==0.4.0
+
+# Notebooki / interfejs
+jupyterlab>=4.4,<5
+ipykernel>=6.29,<7
+ipywidgets>=8.1,<9
+
+# Obliczenia i wizualizacja
+numpy>=2,<3
+scipy>=1.15,<2
+pandas>=2.2,<4
+sympy>=1.13,<2
+matplotlib>=3.10,<4
+pylatexenc>=2.10,<3
+
+# Kryptografia klasyczna i postkwantowa
+cryptography==50.0.1
